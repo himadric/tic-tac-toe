@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-family: sans-serif;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+  position: relative; /* Needed for absolute positioning of confetti */
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  margin: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  cursor: pointer;
+  background-color: white;
+}
+
+.cell:hover {
+  background-color: #eee;
+}
+
+.cell-player {
+  color: blue; /* Player's moves in blue */
+}
+
+.cell-ai {
+  color: red; /* AI's moves in red */
+}
+
+.message {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.reset-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
   color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.App-link {
-  color: #61dafb;
+.reset-button:hover {
+  background-color: #45a049;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.confetti-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Allow clicks to pass through to the game */
+  z-index: 100; /* Ensure confetti is on top */
 }
